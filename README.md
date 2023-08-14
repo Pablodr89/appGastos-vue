@@ -1,5 +1,5 @@
-# Segundo proyecto Vue
+# Tercer proyecto Vue
 
-Segundo proyecto del curso de Vue.
+Tercer proyecto del curso de Vue.
 
-## Para ver la web haga click la siguiente URL:
+## Para ver la web haga click en la siguiente URL:

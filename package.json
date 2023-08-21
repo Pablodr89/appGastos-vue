@@ -1,5 +1,5 @@
 {
-  "name": "appgastos-vue",
+  "name": "admin-gastos",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,12 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.4",
-    "sass": "^1.66.0",
+    "sass": "^1.58.3",
+    "vue": "^3.2.45",
     "vue3-circle-progress": "^1.0.7"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.2.3",
-    "vite": "^4.4.5"
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.1.0"
   }
 }

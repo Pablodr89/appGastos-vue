@@ -1,8 +1,12 @@
 <script setup>
-    import imagen from '../assets/img/grafico.jpg'
+    import { computed } from 'vue'
+    import CircleProgress from 'vue3-circle-progress'
+    import "vue3-circle-progress/dist/circle-progress.css"
     import { formatearCantidad } from '../helpers'
 
-    let props = defineProps({
+    defineEmits(['reset-app'])
+
+    const props = defineProps({
         presupuesto: {
             type: Number,
             required: true
@@ -10,36 +14,59 @@
         disponible: {
             type: Number,
             required: true
+        },
+        gastado: {
+            type: Number,
+            required: true
         }
+    })
+
+    const porcentaje = computed(() => {
+        return parseInt(((props.presupuesto - props.disponible) / props.presupuesto) * 100)
     })
 </script>
 
 <template>
     <div class="dos-columnas">
         <div class="contenedor-grafico">
-            <img :src="imagen">
+
+            <p class="porcentaje">{{ porcentaje }}%</p>
+
+            <CircleProgress
+                :percent="porcentaje"
+                :size="250"
+                :border-width="30"
+                :border-bg-width="30"
+                fill-color="#3b82f6"
+                empty-color="#e1e1e1"
+            />
         </div>
 
         <div class="contenedor-presupuesto">
-            <button type="button" class="reset-app">Reiniciar presupuesto</button>
-        
+            <button
+                class="reset-app"
+                type="button"
+                @click="$emit('reset-app')"
+            >Resetear App</button>
+
             <p>
                 <span>Presupuesto:</span>
-                {{ formatearCantidad(presupuesto) }} 
+                {{ formatearCantidad(presupuesto) }}
             </p>
 
             <p>
                 <span>Disponible:</span>
-                {{ formatearCantidad(disponible) }} 
+                {{ formatearCantidad(disponible) }}
             </p>
 
             <p>
                 <span>Gastado:</span>
-                0 €
+                {{ formatearCantidad(gastado) }}
             </p>
         </div>
     </div>
 </template>
+
 
 <style scoped>
     .contenedor-grafico {
@@ -75,6 +102,7 @@
             margin-bottom: 0;
         }
     }
+
     .reset-app {
         background-color: #DB2777;
         border: none;

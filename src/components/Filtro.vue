@@ -8,6 +8,8 @@
     </div>
 </template>
 
+
+
 <style scoped>
     h2 {
         color: blue;
